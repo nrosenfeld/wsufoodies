@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">wsufoodies</string>
+
+    <string-array name="standings">
+        <item>FRESHMAN</item>
+        <item>SOPHOMORE</item>
+        <item>JUNIOR</item>
+        <item>SENIOR</item>
+        <item>POST-GRAD</item>
+        <item>FACULTY</item>
+    </string-array>
+</resources>

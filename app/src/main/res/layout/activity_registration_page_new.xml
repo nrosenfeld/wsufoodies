@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="#FFC842"
+        android:textSize="20dp"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:hint="First Name"
+
+        android:inputType="textPersonName"
+        android:textColor="#FFC842"
+        />
+
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Last Name"
+
+        android:inputType="textPersonName"
+        android:textColor="#FFC842"
+
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Email address"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFC842"
+
+        tools:ignore="TextContrastCheck" />
+
+
+    <EditText
+        android:id="@+id/bdate"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Current Age"
+
+        android:inputType="text"
+        android:textColor="#FFC842"
+
+        tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+    <Spinner
+        android:id="@+id/standing"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Standing"
+        android:spinnerMode="dropdown"
+
+
+
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+    <EditText
+        android:id="@+id/passwordRegister"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Choose a password"
+
+        android:inputType="textPassword"
+        android:textColor="#FFC842"
+
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/confirmPassword"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Confirm Password"
+
+        android:inputType="textPassword"
+        android:textColor="#FFC842"
+        android:textColorHint="#FFC842"
+        tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_gravity="center"
+                android:background="#FFC842"
+                android:textColor="#00584D"/>
+
+
+
+</LinearLayout>
