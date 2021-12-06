@@ -3,7 +3,6 @@ package edu.wsu.wsufoodies;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -84,9 +83,9 @@ public class RegistrationPage extends AppCompatActivity {
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        standingSelect.setAdapter(adapter);
-        standingSelect.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        //standingSelect.setAdapter(adapter);
+        //standingSelect.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,9 +134,13 @@ public class RegistrationPage extends AppCompatActivity {
         });
     }
 
-    public void goMain(View v) {
-        startActivity(new Intent(RegistrationPage.this, ActMain.class));
-    }
+
+    public void goMain(View v){
+        startActivity(new Intent(RegistrationPage.this,
+                ActMain.class)); }
+
+
+
 
 
 
