@@ -61,7 +61,7 @@
         android:ems="10"
         android:hint="Current Age"
 
-        android:inputType="text"
+        android:inputType="number"
         android:textColor="#FFC842"
 
         tools:ignore="TextContrastCheck,TextContrastCheck" />

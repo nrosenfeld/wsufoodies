@@ -3,6 +3,8 @@ package edu.wsu.wsufoodies;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -53,6 +55,8 @@ public class RegistrationPage extends AppCompatActivity {
     EditText ageBox;// = findViewById(R.id.bdate);
     Spinner standingSelect;// = findViewById(R.id.standing);
     Button submit;
+    String standings[]={"FRESHMAN","SOPHOMORE","JUNIOR","SENIOR","GRADUATE","ALUMNUS",
+        "FACULTY"};
 
 
 
@@ -71,8 +75,8 @@ public class RegistrationPage extends AppCompatActivity {
         ageBox = (EditText) findViewById(R.id.bdate);
         standingSelect = (Spinner) findViewById(R.id.standing);
         submit = (Button) findViewById(R.id.button);
-        // ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.standings,
-        //        android.R.layout.simple_spinner_dropdown_item)
+        ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, standings);
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -80,8 +84,9 @@ public class RegistrationPage extends AppCompatActivity {
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        //standingSelect.setAdapter(adapter);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        standingSelect.setAdapter(adapter);
+        standingSelect.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,28 +98,39 @@ public class RegistrationPage extends AppCompatActivity {
                 password = passwordBox.getText().toString();
                 passwordConfirm = confirmPassword.getText().toString();
                 age = Integer.parseInt(ageBox.getText().toString());
+
                 standing = Standing.ALUMNUS;   //just default to alumnus until I can figure out how
                 //to read value from spinner
-                newUser = new User(lastName, firstName, password, email, standing, age);
+                if (password.equals("")||firstName.equals("")||lastName.equals("")){
+                    Toast.makeText(RegistrationPage.this, "Form incomplete!",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if (!password.equals(passwordConfirm)){
+                    Toast.makeText(RegistrationPage.this, "Passwords don't match!",
+                        Toast.LENGTH_LONG).show();
+                }
+                else {
+                    newUser = new User(lastName, firstName, password, email, standing, age);
 
-                message.setText("Welcome!");
-                Call<Void> call = retrofitInterface.executeRegister(newUser);
-                call.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        Toast.makeText(RegistrationPage.this,"Success!",
+                    message.setText("Welcome!");
+                    Call<Void> call = retrofitInterface.executeRegister(newUser);
+                    call.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            Toast.makeText(RegistrationPage.this,"Success!",
                                 Toast.LENGTH_LONG).show();
 
-                    }
+                        }
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(RegistrationPage.this, t.getMessage(),
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(RegistrationPage.this, t.getMessage(),
                                 Toast.LENGTH_LONG).show();
 
 
-                    }
-                });
+                        }
+                    });
+                }
             }
         });
     }

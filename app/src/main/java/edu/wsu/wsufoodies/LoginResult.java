@@ -1,4 +1,4 @@
-import edu.wsu.wsufoodies.User;
+package edu.wsu.wsufoodies;
 
 public class LoginResult {
     User user;
